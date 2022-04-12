@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+	<title>
+		Cookies y Session
+	</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+	<% if (locals.userData) { %>
+		<section>
+			<p>Hola <%= userData.name %>, elegiste el color <%= userData.color %>, tu email es: <%= userData.email %>
+							<%= userData.age !=="" && `y tu edad es ${userData.age}` %>
+			</p>
+		</section>
+		<% } %>
+
+			<form action="/" method="post">
+				<div>
+					<label for="name">Ingrese su nombre *</label>
+					<input type="text" name="name" id="name">
+					<% if (locals.errors && errors.name) { %>
+						<small class="text-danger">
+							<%= errors.name.msg %>
+						</small>
+						<% } %>
+				</div>
+
+				<div class="">
+					<select name="color" id="color">
+						<option hidden selected value="">Elija un color *</option>
+						<option value="blue">blue</option>
+						<option value="red">red</option>
+						<option value="green">green</option>
+						<option value="yellow">yellow</option>
+						<option value="black">black</option>
+					</select>
+					<% if (locals.errors && errors.color) { %>
+						<small class="text-danger">
+							<%= errors.color.msg %>
+						</small>
+						<% } %>
+				</div>
+
+				<div>
+					<label for="email">Ingrese su email *</label>
+					<input type="email" name="email" id="email">
+					<% if (locals.errors && errors.email) { %>
+						<small class="text-danger">
+							<%= errors.email.msg %>
+						</small>
+						<% } %>
+				</div>
+
+				<div>
+					<label for="age">Ingrese su edad</label>
+					<input type="number" name="age" id="age">
+					<% if (locals.errors && errors.age) { %>
+						<small class="text-danger">
+							<%= errors.age.msg %>
+						</small>
+						<% } %>
+				</div>
+
+				<button type="submit">Enviar</button>
+			</form>
+</body>
+
 </html>
