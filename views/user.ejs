@@ -1,0 +1,27 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>USer</title>
+</head>
+
+<body <%=locals.session.color ? locals.session.color :'' %>>
+    <% if (locals.session.user) { %>
+        <section>
+            <h1>Hola <%= locals.session.user.name %>, Gracias por visitarnos %>
+            </h1>
+        </section>
+        <% }else{ %>
+            <h1>Hola Visitante, Gracias por visitarnos</h1>
+            <% } %>
+                <a href="/">
+                    <button>
+                        Volver
+                    </button>
+                </a>
+</body>
+
+</html>

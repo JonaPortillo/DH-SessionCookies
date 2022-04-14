@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-	<title>
-		Cookies y Session
-	</title>
-	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<title>Session y Cookies</title>
 </head>
 
-<body>
+<body <%=locals.session.color ? locals.session.color :'' %>>
 	<% if (locals.userData) { %>
 		<section>
 			<p>Hola <%= userData.name %>, elegiste el color <%= userData.color %>, tu email es: <%= userData.email %>
-							<%= userData.age !=="" && `y tu edad es ${userData.age}` %>
+							<%= userData.age !=="" && `y tu edad es ${userData.age}, ` %>
 			</p>
 		</section>
 		<% } %>
@@ -65,7 +65,20 @@
 				</div>
 
 				<button type="submit">Enviar</button>
+				<label for="recordar">recordar color</label>
+				<input type="checkbox" name="recordar">
+
 			</form>
+			<form action="/olvidar" method="POST">
+				<button type="submit">Olvidar el color</button>
+
+			</form>
+			<a href="/user">
+				<button>
+					Salir
+				</button>
+			</a>
+
 </body>
 
 </html>
